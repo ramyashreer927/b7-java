@@ -14,13 +14,13 @@ pipeline {
             }
         } 
 
-    post {
-        always {
+          post {
+             always {
             archiveArtifacts artifacts: 'target/**/*.jar', followSymlinks: false
             junit 'target/surefire-reports/*.xml'
         }
     }
-stage('clean ws') {
+           stage('clean ws') {
             steps {
                 cleanWs()
             }
