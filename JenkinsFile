@@ -1,24 +1,24 @@
 pipeline {
-    agent any
 
-    stages {
-        stage('clean') {
-            steps {
-                sh 'mvn clean'
-            }
-        }
-
-        stage('install') {
-            steps {
-                sh 'mvn install'
-            }
-        } 
-
-     post {
-        always {
-                archiveArtifacts artifacts: 'b7-java/target/*/.jar', allowEmptyArchive: true
-								 junit 'target/surefire-reports/*.xml'
-                }
-            }
-        }
-    }
+	agent any
+	stages{   
+		stage(clean){
+			steps{
+				    sh 'mvn clean'
+			}
+			
+		}
+		
+		stage(install){
+			steps{
+				    sh 'mvn install'
+			     
+			}
+			post{
+			    always{
+			        archiveArtifacts artifacts: 'target/**.jar', followSymlinks: false
+			    }
+			}
+		}
+	    }
+	}
