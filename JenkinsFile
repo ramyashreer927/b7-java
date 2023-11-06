@@ -15,8 +15,8 @@ pipeline {
         } 
 
      post {
-                always {
-                    archiveArtifacts artifacts: 'b7-java/target/*/.jar', allowEmptyArchive: true
+        always {
+                archiveArtifacts artifacts: 'b7-java/target/*/.jar', allowEmptyArchive: true
 								 junit 'target/surefire-reports/*.xml'
                 }
             }
